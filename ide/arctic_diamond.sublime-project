@@ -1,0 +1,85 @@
+{
+    "folders":
+    [
+        {
+            "path": "..",
+            "folder_exclude_patterns":
+            [
+                "Eigen",
+                "doc",
+                "lib/rf2aa/lib/ipd",
+                "cifutils",
+                "datahub",
+                // "ipd",
+                "fused_mpnn",
+                "se3_flow_matching",
+                ".venv",
+                ".nox"
+            ]
+        }
+    ],
+        "settings":
+     {
+        "PyYapf": {
+         "yapf_command": "yapf",
+         "on_save": false
+         // "yapf_command": "/home/sheffler/src/willutil/willutil/app/codealign",
+        },
+        "project_environment": {
+            "env": {
+                // "PYTHON": "/home/sheffler/sw/MambaForge/envs/rfdsym312/bin/python",
+                // "PYTHON": "/home/sheffler/sw/MambaForge/envs/rfdsym312/bin/python",
+                "QT_QPA_PLATFORM": "wayland",
+                "SDL_VIDEODRIVER": "wayland"
+            }
+        },
+        "LSP": {
+           "LSP-pyright": {
+              "settings": {
+                  "include": [
+                    "ipd"
+                  ],
+
+                  "exclude": [
+                    "**/node_modules",
+                    "**/__pycache__",
+                    "src/experimental",
+                    "src/typestubs"
+                  ],
+
+                  "ignore": [
+                    "src/oldstuff"
+                  ],
+
+                  "defineConstant": { "DEBUG": true },
+
+                  "stubPath": "src/stubs",
+
+                  "reportMissingImports": false,
+                  "reportMissingTypeStubs": false,
+
+                  "venvPath": "/home/sheffler/sw/MambaForge/envs",
+                  "venv": "rfdsym312",
+                  "pythonVersion": "3.12",
+                  "pythonPlatform": "Linux",
+
+                  "executionEnvironments": [
+                    {
+                      "root": "ipd"
+                    }
+                  ]
+
+
+              }
+           }
+        }
+     },
+    "build_systems":
+    [
+        {
+            "name": "run it",
+            "shell_cmd": "cd $folder; PYTHONPATH=. uv run python -m ard 2>&1 | tee $folder/sublime_build.log;",
+            "file_regex": "^\\s*File \"(...*?)\", line ([0-9]*)"
+        }
+    ]
+}
